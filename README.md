@@ -9,7 +9,7 @@ INSERIR AQUI HIPERLINKS PARA A BASE BRUTA E O ARQUIVOS COM AS PLANILHAS DO TRABA
 Como já dito, o arquivo com todas as autuações ambientais aplicadas pelo ICMBio foi divulgado pela primeira vez no dia 23 de agosto deste ano. Possui registros que datam desde 2008 (o ICMBio foi criado em agosto de 2007), e inclui nomes e CPFs dos autuados, descrição dos autos de infração, dos embargos, fase de julgamento, números dos processos, valor das multas, entre outros dados considerados relevantes para exploração e consulta para casos específicos. É, também, uma base com muitas colunas autoexplicativas e, para nossa análise, havia poucos problemas a serem contornados (que são descritos mais abaixo). Fizemos nossa escolha, portanto, pela relevância, novidade e qualidade dos dados.
 ## Que plataforma usamos para a análise?
 Fizemos todo o processamento dos dados em planilha eletrônica do Excel, com o uso de tabela dinâmica e fórmulas.
-## Como analisamos com a base de dados?
+## Como analisamos a base de dados?
 O trabalho consistiu em analisar o banco de dados para buscar insights que levassem a investigações relacionadas à degradação ambiental de Unidades de Conservação (UCs) federais, que são protegidas por lei (ver [Lei Nº 9.985/2000] (https://www.planalto.gov.br/ccivil_03/leis/l9985.htm)) e normativas infralegais, conforme classificação de cada uma.
 Para iniciar o trabalho, verificamos as colunas das tabelas para entender cada parâmetro e selecionamentos os que nos interessava para análise. Cabe destacar que não identificamos um dicionário para o banco de dados. No entanto, os títulos das colunas e os dados contidos estavam claros o suficiente para os fins que precisávamos – e há similaridade com o banco do Ibama, então é possível fazer algumas comparações para atestar a segurança dos dados (CPFs comuns, por exemplo).
 ### Excluímos as seguintes colunas antes de começar o processamento:
@@ -31,14 +31,14 @@ Para iniciar o trabalho, verificamos as colunas das tabelas para entender cada p
 - Julgamento: fase ou andamento do processo.
 Posteriormente, conforme a análise avançava, fizemos a padronização dos dados e ajuste de dados ausentes onde havia necessidade e nos certificamos de que não havia erro de formatação que causasse alguma distorção nos dados. Explicamos melhor cada limpeza mais abaixo.
 
-## Que perguntas fizemos aos dados?
+## Quais perguntas fizemos aos dados?
 Inicialmente, optamos identificar quais Unidades de Conservação (UCs) registravam mais infrações ambientais. Portanto:
-_Quais as 10 UCs mais "atacadas" do país?_
+- _Quais as 10 UCs mais "atacadas" do país?_
 Uma vez identificada nossa delimitação de pauta, seguimos com outras quatro perguntas:
-_Quais os maiores infratores na Flona do Jamanxim?_
-_Quais as atividades econômicas ligadas às infrações cometidas na Flona do Jamanxim?_
-_Quais as infrações cometidas pela campeã de multas da Flona do Jamanxim?_
-_Como as autuações ambientais da Flona do Jamanxim estão distribuídas ano a ano?_
+- _Quais os maiores infratores na Flona do Jamanxim?_
+- _Quais as atividades econômicas ligadas às infrações cometidas na Flona do Jamanxim?_
+- _Quais as infrações cometidas pela campeã de multas da Flona do Jamanxim?_
+- _Como as autuações ambientais da Flona do Jamanxim estão distribuídas ano a ano?_
 
 ### 1- Quais as 10 UCs mais "atacadas" do país?
 - Verificamos que não havia dados ausentes na coluna;
