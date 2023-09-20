@@ -1,10 +1,12 @@
 # Análise da base de dados de autuações ambientais aplicadas pelo ICMBio (Grupo 6)
 O conteúdo compõe o trabalho final da disciplina Fundamentos e Ética do Jornalismo de Dados, do Master em Jornalismo de Dados, Automação e Datasotrytelling do Insper.
 
-A base de dados utilizada foi o arquivo com todas as autuações ambientais aplicadas pelo Instituto Chico Mendes de Conservação da Biodiversidade (ICMBio), que passou a ser divulgada pelo instituto em agosto deste ano. COLOCAR HIPERLINK DA PÁGINA
+A base de dados utilizada foi o arquivo com todas as autuações ambientais aplicadas pelo Instituto Chico Mendes de Conservação da Biodiversidade (ICMBio), que passou a ser divulgada pelo instituto em agosto deste ano.
 
 ## Arquivos usados nas análises
-INSERIR AQUI HIPERLINKS PARA A BASE BRUTA E O ARQUIVOS COM AS PLANILHAS DO TRABALHO
+Subimos neste repositório os dados brutos, sem nenhum ajuste, mas ele pode ser baixado [aqui](https://www.gov.br/icmbio/pt-br/assuntos/dados_geoespaciais/mapa-tematico-e-dados-geoestatisticos-das-unidades-de-conservacao-federais).
+
+A base com as colunas selecionadas para análise, as construídas a partir dela com as filtragens necessárias e as tabelas dinâmicas onde chegamos aos resultados estão [neste arquivo](INSERIR HIPERLINK DOS ARQUIVOS].
 
 ## Por que escolhemos essa base?
 Como já dito, o arquivo com todas as autuações ambientais aplicadas pelo ICMBio foi divulgado pela primeira vez no dia 23 de agosto deste ano. Possui registros que datam desde 2008 (o ICMBio foi criado em agosto de 2007), e inclui nomes e CPFs dos autuados, descrição dos autos de infração, dos embargos, fase de julgamento, números dos processos, valor das multas, entre outros dados considerados relevantes para exploração e consulta para casos específicos. É, também, uma base com muitas colunas autoexplicativas e, para nossa análise, havia poucos problemas a serem contornados (que são descritos mais abaixo). Fizemos nossa escolha, portanto, pela relevância, novidade e qualidade dos dados.
@@ -48,16 +50,20 @@ Uma vez identificada nossa delimitação de pauta, seguimos com outras quatro pe
 ### 1- Quais as 10 UCs mais "atacadas" do país?
 - Verificamos que não havia dados ausentes na coluna;
 - Montamos uma tabela dinâmica com as colunas Nome da UC, Valor da Multa e contagem de vezes em que aparecia o nome de cada Unidade de Conservação na coluna Nome da UC;
-- Ordenamos por quantidade de autuações de cada UC, da maior para a menor. Constatamos que a primeira colocada, a Floresta Nacional do Jamanxim (Flona), era líder isolada do ranking. Testamos com multas, e ela continua na liderança com folga.
+- Ordenamos por quantidade de autuações de cada UC, da maior para a menor. Constatamos que a primeira colocada, a Floresta Nacional do Jamanxim (Flona), era líder isolada do ranking. Testamos com a soma do valor das multas, e ela continua na liderança com folga.
 
-A partir daí, pesquisamos a respeito da Flona do Jamanxim e, pelo histórico e simbolismo desse território, unidos ao dado citado anteriormente, escolhemos analisar mais a fundo os números da Flona do Jamanxim.
+A partir daí, pesquisamos a respeito da Flona do Jamanxim e, pelo histórico e simbolismo desse território (por exemplo, ela fica em Novo Progresso, Pará, onde investigações de jornalistas ambientais identificaram ter começado a ação coordenada de incêndios florestais conhecida como Dia do Fogo, em 2019), unidos ao dado citado anteriormente, escolhemos analisar mais a fundo os números da Flona do Jamanxim.
 
 ## Quais os maiores infratores na Flona do Jamanxim?
 - Filtramos todas as autuações específicas dessa UC e copiamos como uma nova tabela, para facilitar a reprodução dos passos;
-- Verificamos que havia dados ausentes no campo do CPF, que seria usado para realizar a soma das multas em nome dos autuados, a fim de evitar homônimos e erros de grafia. Abrimos uma cópia da planilha filtrada da Flona para realizar exclusões sem afetar as análises seguinte, conforme explicado mais abaixo. Procedemos da seguinte maneira:
-COLAR AQUI A LIMPEZA DE DADOS
-- Concluídos os ajustes, abrimos uma tabela dinâmica para fazer a contagem do valor das multas por autuados. Usamos as colunas de CPFs para a contagem, e incluímos os nomes como rótulos para identificar os maiores autuados;
-- Calculamos o 99 percentil da base de dados com a fórmula =PERCENTIL (matriz;k), ou seja: identificamos o valor de corte para entrar no 1% de valores devidos mais altos, e estabelecemos o ranking de 9 nomes a partir de R$ 17.784.900.
+- Verificamos que havia dados ausentes no campo do CPF, que seria usado para realizar a soma das multas em nome dos autuados, a fim de evitar homônimos e erros de grafia. **Abrimos uma cópia da planilha filtrada da Flona para realizar exclusões sem afetar as análises seguintes**, conforme explicado mais abaixo. Procedemos da seguinte maneira:
+  - Havia pessoas sem CPF. Foram identificados todos os espaços em branco, e o tratamento foi dividido em dois grupos.
+    - Para multas com valor menor que R$ 1 milhão, foi feita busca pelo nome no banco de dados. Quando não havia outra multa com o mesmo nome (ou muito semelhante) e, portanto, não geraria agregação para um valor maior, a pessoa era excluída da base de dados, pois ela não seria relevante para esta análise específica.
+    - Quando havia multa de mais de R$ 1 milhão, foi atribuído um CPF fictício (e que não pudesse se confundir com nenhum outro). Caso o mesmo nome tivesse mais de uma multa, o mesmo CPF fictício era atribuído. Nenhum caso desses alcançou o corte do ranqueamento.
+  - Há 75 “infratores não identificados” num universo de 1946 autuações. Estão, portanto, sem CPF. 39 deles não tinham recebido multa (há possibilidade de receber somente advertência). Outros 15 possuíam multa abaixo de R$ 100 mil. Outros oito estão acima disso e com limite de R$ 1 milhão. Hipoteticamente, seria possível que várias dessas multas pertencessem à mesma pessoa, mas se não há identificado, o objeto da nossa análise, que são os infratores apontados pelo ICMBio, se perde. De todo modo, Atribuímos CPFs fictícios aos não identificados acima de R$ 1 milhão, e nenhum alcançava o corte do ranking.
+  - Havia alguns CPFs faltando um dígito. Procuramos na base de dados o mesmo nome de autuado, a mesma sequência numérica e o CPF completo (casos em que há mais de uma multa), e fizemos a substituição. Para quem só tinha uma multa, buscamos no banco de autuações do IBAMA com a mesma lógica. Não houve caso em que não foi encontrado o registro para substituição, mas seria possível buscar por outros meios o preenchimento desse CPF corretamente, caso fosse necessário para a análise.
+- Concluídos os ajustes, abrimos uma tabela dinâmica para fazer a contagem do valor das multas por autuados. Usamos as colunas CPF/CNPJ para a contagem, e incluímos a coluna Autuados como rótulos para identificar os maiores multados;
+- Calculamos o 99 percentil da base de dados com a fórmula `=PERCENTIL (matriz;k)`, ou seja: identificamos o valor de corte para entrar no 1% de valores devidos mais altos, e estabelecemos o ranking de 9 nomes a partir de R$ 17.784.900.
 - Constatamos outra liderança isolada, neste caso no ranking de multados: Sandra Mara Silveira, já citada em reportagens sobre desmatamento na Amazônia.
 
 ## Quais as atividades econômicas ligadas às infrações cometidas na Flona do Jamanxim?
