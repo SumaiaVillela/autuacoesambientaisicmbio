@@ -10,7 +10,7 @@ Como já dito, o arquivo com todas as autuações ambientais aplicadas pelo ICMB
 ## Que plataforma usamos para a análise?
 Fizemos todo o processamento dos dados em planilha eletrônica do Excel, com o uso de tabela dinâmica e fórmulas.
 ## Como analisamos a base de dados?
-O trabalho consistiu em analisar o banco de dados para buscar insights que levassem a investigações relacionadas à degradação ambiental de Unidades de Conservação (UCs) federais, que são protegidas por lei (ver [Lei Nº 9.985/2000] (https://www.planalto.gov.br/ccivil_03/leis/l9985.htm)) e normativas infralegais, conforme classificação de cada uma.
+O trabalho consistiu em analisar o banco de dados para buscar insights que levassem a investigações relacionadas à degradação ambiental de Unidades de Conservação (UCs) federais, que são protegidas por lei (ver [Lei Nº 9.985/2000](https://www.planalto.gov.br/ccivil_03/leis/l9985.htm)) e normativas infralegais, conforme classificação de cada uma.
 Para iniciar o trabalho, verificamos as colunas das tabelas para entender cada parâmetro e selecionamentos os que nos interessava para análise. Cabe destacar que não identificamos um dicionário para o banco de dados. No entanto, os títulos das colunas e os dados contidos estavam claros o suficiente para os fins que precisávamos – e há similaridade com o banco do Ibama, então é possível fazer algumas comparações para atestar a segurança dos dados (CPFs comuns, por exemplo).
 ### Excluímos as seguintes colunas antes de começar o processamento:
 - ID: número do item
