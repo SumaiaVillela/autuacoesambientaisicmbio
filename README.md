@@ -4,7 +4,7 @@ O conteúdo compõe o trabalho final da disciplina Fundamentos e Ética do Jorna
 A base de dados utilizada foi o arquivo com todas as autuações ambientais aplicadas pelo Instituto Chico Mendes de Conservação da Biodiversidade (ICMBio), que passou a ser divulgada pelo instituto em agosto deste ano.
 
 ## Arquivos usados nas análises
-Subimos neste repositório os [dados brutos]([autos_infracao_icmbio_atualizado_25082023.xlsx](https://github.com/SumaiaVillela/autuacoesambientaisicmbio/blob/b6a1886fa7a639cee1ac4858220d96f66b248352/autos_infracao_icmbio_atualizado_25082023.xlsx)), sem nenhum ajuste, mas ele pode ser baixado [aqui](https://www.gov.br/icmbio/pt-br/assuntos/dados_geoespaciais/mapa-tematico-e-dados-geoestatisticos-das-unidades-de-conservacao-federais).
+Subimos neste repositório os [dados brutos](https://github.com/SumaiaVillela/autuacoesambientaisicmbio/blob/b6a1886fa7a639cee1ac4858220d96f66b248352/autos_infracao_icmbio_atualizado_25082023.xlsx), sem nenhum ajuste, mas ele pode ser baixado [aqui](https://www.gov.br/icmbio/pt-br/assuntos/dados_geoespaciais/mapa-tematico-e-dados-geoestatisticos-das-unidades-de-conservacao-federais).
 
 A base com as colunas selecionadas para análise, as construídas a partir dela com as filtragens necessárias e as tabelas dinâmicas onde chegamos aos resultados estão [neste arquivo](INSERIR HIPERLINK DOS ARQUIVOS].
 
