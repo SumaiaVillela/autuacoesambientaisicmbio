@@ -8,6 +8,8 @@ Subimos neste repositório os [dados brutos](https://github.com/SumaiaVillela/au
 
 A base com as colunas selecionadas para análise, as construídas a partir dela com as filtragens necessárias e as tabelas dinâmicas onde chegamos aos resultados estão [neste arquivo](https://github.com/SumaiaVillela/autuacoesambientaisicmbio/blob/main/autos_infracao_icmbio_25-08-2023_PLANILHAS%20FILTRADAS%20E%20TABELAS%20DIN%C3%82MICAS.xlsx).
 
+[Neste outro arquivo](https://github.com/SumaiaVillela/autuacoesambientaisicmbio/blob/main/Termos%20comuns%20nas%20descri%C3%A7%C3%B5es%20de%20infra%C3%A7%C3%A3o%20-%20base%20do%20ICMBio%20de%2025-08-2023.xlsx), temos os termos mais comuns encontrados nas descrições dos autos de infração separados por tipo de infração (contra a fauna, contra a flora, etc), o que nos auxiliou a identificar as principais atividades econômicas envolvidas nas infrações ambientais.
+
 ## Por que escolhemos essa base?
 Como já dito, o arquivo com todas as autuações ambientais aplicadas pelo ICMBio foi divulgado pela primeira vez no dia 23 de agosto deste ano. Possui registros que datam desde 2008 (o ICMBio foi criado em agosto de 2007), e inclui nomes e CPFs dos autuados, descrição dos autos de infração, dos embargos, fase de julgamento, números dos processos, valor das multas, entre outros dados considerados relevantes para exploração e consulta para casos específicos. É, também, uma base com muitas colunas autoexplicativas e, para nossa análise, havia poucos problemas a serem contornados (que são descritos mais abaixo). Fizemos nossa escolha, portanto, pela relevância, novidade e qualidade dos dados.
 ## Que plataforma usamos para a análise?
@@ -80,6 +82,10 @@ Os resultados da análise estão na planilha `Ranking maiores multados` do arqui
 - Organizamos por número de infrações em cada tipo, do maior para o menor. As infrações contra a flora são a tipificação mais comum, de novo em liderança absoluta.
 
 `PRINCPAL DADO: Das Infrações Contra a Flora é o tipo mais comum de infração, com 1.249 dos 1.496 registros.`
+
+- Em um conjunto de planilhas específico (linkado no início deste READ-ME, separamos a coluna `Descrição AI` para cada parâmetro que consta na coluna `Tipo de Infração`, de modo a identificar as atividades econômicas ligadas a cada uma. Para fazer a contagem dos termos, usamos a fórmula `=CONT.SE(intervalo;critérios)`, colocando o `*`ao início e fim de cada critério, para abarcar todas as construções frasais possíveis. Identificamos, por exemplo, que a palavra "gado" aparece 565 vezes quando o tipo de infração é contra a flora, ou que as variações de minério aparecem 70 vezes em 90 ocorrências relacionadas a poluição e outras infrações ambientais.
+
+`PRINCIPAL DADO: Termos ligados a desmatamento e pecuária são comuns em infrações contra a flora, que é a líder entre os tipos de autuação.`
 ### Quais as infrações cometidas pela campeã de multas da Flona do Jamanxim?
 - Também filtramos as infrações cometidas pela primeira colocada no ranking de multados e separamos os detalhes de cada infração, inscritos na coluna `Descrição AI` (Auto de Infração).
 
