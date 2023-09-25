@@ -71,10 +71,13 @@ Os resultados da análise estão na planilha `Ranking UC - qnt de autuações` d
 - Concluídos os ajustes, abrimos uma tabela dinâmica para fazer a contagem do valor das multas por autuados. Usamos as colunas `CPF/CNPJ` para a contagem, e incluímos a coluna `Autuados` como rótulos para identificar os maiores multados;
 - Calculamos o 99 percentil da base de dados com a fórmula `=PERCENTIL (matriz;k)`, ou seja: identificamos o valor de corte para entrar no 1% de valores devidos mais altos, e estabelecemos o ranking de 9 nomes a partir de R$ 17.784.900.
 - Constatamos outra liderança isolada, neste caso no ranking de multados: Sandra Mara Silveira, já citada em reportagens sobre desmatamento na Amazônia.
+- Também fizemos o ranking por ano. Para isso, inserimos, em outra tabela dinâmica, a coluna `Ano` e retiramos a coluna `Autuados` (porque a tabela dinâmica cria uma hierarquização entre CPF e autuado que polui a tabela quando ela é exportada para virar uma nova base de dados). O resultado dessa nova tabela dinâmica foi copiado e colado apenas como dados, para que pudéssemos usar mais facilmente o filtro em cada ano. Usamos a fórmula `=PROCV(valor_procurado;matriz_tabela; núm_índice_coluna; [procurar_intervalo])`para inserir os nomes dos multados na nova base e ativamos os filtros. Assim, é possível navegar por ordem decrescente em cada ano. 
 
-`PRINCIPAL DADO: Sandra Mara Silveira já foi multada em R$ 101,37 milhões`
-
-Os resultados da análise estão na planilha `Ranking maiores multados` do arquivo.
+`PRINCIPAL DADO: Sandra Mara Silveira já foi multada em R$ 101,37 milhões. Sua última multa é de 2022`
+ `PRINCPAL DADO 2: Marco Tulio Pires Franco é o primeiro da lista de 2023, com valor em multa de R$ 12,88 milhões`
+  `PRINCIPAL DADO 3: Jaime Zaminham é o primeiro da lista de 2022, com valor em multa de R$ 27,25 milhões`
+  
+Os resultados da análise estão nas planilhas `Ranking maiores multados` e `Ranking multados por ano` do arquivo.
 
 ## Quais as atividades econômicas ligadas às infrações cometidas na Flona do Jamanxim?
 - Não havia ausência de dados relacionados na coluna `Tipo de Infração`;
